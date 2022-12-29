@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-    crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
     />
   </head>
   <body>
@@ -19,7 +19,7 @@
         <div class="container">
           <a class="navbar-brand" href="/" title="Place for logo"
             ><img
-            class="rounded"
+              class="rounded"
               src="{% static 'images/django-logo.png' %}"
               alt="..."
               height="44"
@@ -42,7 +42,7 @@
             >
               <li class="nav-item dropdown">
                 <a
-                title="Categories"
+                  title="Categories"
                   class="nav-link dropdown-toggle"
                   href="#"
                   role="button"
@@ -53,12 +53,20 @@
                 </a>
                 <ul class="dropdown-menu">
                   {% for title in collection_title %}
-                  <li><a class="dropdown-item" href="/{{title}}">{{title}}</a></li>
+                  <li>
+                    <a class="dropdown-item" href="/{{title}}">{{title}}</a>
+                  </li>
                   {% endfor %}
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" title="Contact us" style="cursor: pointer;">Contact us</a>
+                <a
+                  class="nav-link"
+                  href="{% url 'contact' %}"
+                  title="Contact us"
+                  style="cursor: pointer"
+                  >Contact me</a
+                >
               </li>
             </ul>
             <div class="d-flex">
@@ -75,7 +83,28 @@
                 style="--bs-scroll-height: 100px"
               >
                 <li class="nav-item">
-                  <a class="nav-link" href="#" title="Login"
+                  {% if request.user.is_authenticated %}
+                  <a class="nav-link" href="{% url 'logout' %}" title="Logout"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      fill="currentColor"
+                      class="bi bi-box-arrow-left"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+                      />
+                    </svg>
+                  </a>
+                  {% else %}
+                  <a class="nav-link" href="{% url 'login' %}" title="Login"
                     ><svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="22"
@@ -91,6 +120,7 @@
                       />
                     </svg>
                   </a>
+                  {% endif %}
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#" title="Basket">
@@ -117,7 +147,12 @@
     {% block main %}
     <main>
       <div class="container-fluid">
-        <a href=""><img src="{% static 'images/91-9caa50666a.avif' %}" class="img-fluid" alt="..."></a>
+        <a href=""
+          ><img
+            src="{% static 'images/91-9caa50666a.avif' %}"
+            class="img-fluid"
+            alt="..."
+        /></a>
       </div>
     </main>
     {% endblock %}
