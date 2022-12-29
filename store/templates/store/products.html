@@ -1,20 +1,19 @@
 {% extends "store/main.html" %} {% load static %} {% block main %}
-<section style="background-color: #eee">
+<section class="mt-2" style="background-color: #eee">
   <div class="container">
     <div class="row">
       {% for product in products %}
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card">
-          <img
-            src="{% static 'images/tshirt.webp' %}"
-            alt="..."
-            class="card-img-top"
-          />
-          <div class="card-body">
-            <h4 class="card-title mb-4 text-center">{{product.title}}</h4>
-            <h5 class="mb-3 text-center">{{product.price}}&nbspPLN</h5>
-          </div>
-        </div>
+        <a class="text-reset" href="#!" style="text-decoration:none;">
+            <div class="card">
+                <img src="static/{{product.image}}" alt="">
+                
+                <div class="card-body">
+                  <h4 class="card-title mb-4 text-center">{{product.title}}</h4>
+                  <h5 class="mb-3 text-center">{{product.price}}&nbspPLN</h5>
+                </div>
+              </div>
+        </a>
       </div>
       {% endfor %}
     </div>

@@ -27,7 +27,7 @@ class Promotion(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='store/images', validators=[validate_file_size])
+    image = models.ImageField(upload_to='images', validators=[validate_file_size])
     price = models.DecimalField(max_digits=9, decimal_places=2, validators=[MinValueValidator(1)])
     inventory = models.IntegerField(validators=[MinValueValidator(0)])
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT, related_name='products')
