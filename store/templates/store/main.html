@@ -17,11 +17,12 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="#" title="Place for logo"
+          <a class="navbar-brand" href="/" title="Place for logo"
             ><img
-              src="https://placeholder.pics/svg/150x50/888888/EEE/Logo"
+            class="rounded"
+              src="{% static 'images/django-logo.png' %}"
               alt="..."
-              height="36"
+              height="44"
           /></a>
           <button
             class="navbar-toggler"
@@ -52,7 +53,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   {% for title in collection_title %}
-                  <li><a class="dropdown-item" href="/{{title|lower}}">{{title}}</a></li>
+                  <li><a class="dropdown-item" href="/{{title}}">{{title}}</a></li>
                   {% endfor %}
                 </ul>
               </li>
@@ -218,5 +219,3 @@
     ></script>
   </body>
 </html>
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. A autem ea eaque delectus dolore facere fugiat dolorum ad tenetur animi.
