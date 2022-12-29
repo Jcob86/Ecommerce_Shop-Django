@@ -18,6 +18,16 @@ class CustomLoginView(LoginView):
     
     def get_success_url(self) -> str:
         return reverse_lazy('main')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        collections = Collection.objects.all()
+        collection_titles = []
+        for collection in collections:
+            collection_titles.append(collection.title)
+        context['collection_title'] = collection_titles
+        return context
+
 
 
 # Register functionality
@@ -36,6 +46,26 @@ class CustomRegisterView(FormView):
         if self.request.user.is_authenticated:
             return redirect('main')
         return super().get(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        collections = Collection.objects.all()
+        collection_titles = []
+        for collection in collections:
+            collection_titles.append(collection.title)
+        context['collection_title'] = collection_titles
+        return context
+
+# view after logging out
+def logged_out(request):
+    collections = Collection.objects.all()
+    collection_titles = []
+    for collection in collections:
+        collection_titles.append(collection.title)
+    context = {
+        'collection_title':collection_titles
+    }
+    return render(request, 'store/logged_out.html', context)
 
 
 # main page view
