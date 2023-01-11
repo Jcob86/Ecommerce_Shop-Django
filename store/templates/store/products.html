@@ -4,9 +4,9 @@
     <div class="row">
       {% for product in products %}
       <div class="col-lg-4 col-md-6 mb-4">
-        <a class="text-reset" href="#!" style="text-decoration:none;">
+        <a class="text-reset" href="/{{product.id}}" style="text-decoration:none;">
             <div class="card">
-                <img src="static/{{product.image}}" alt="">
+                <img src="/static/{{product.image}}" alt="">
                 
                 <div class="card-body">
                   <h4 class="card-title mb-4 text-center">{{product.title}}</h4>
