@@ -108,14 +108,16 @@ def productList(request, *args, **kwargs):
 
 # view for product details
 def productDetails(request, *args, **kwargs):
+    template_name = 'store/product_details.html'
     collections = Collection.objects.all()
     collection_titles = []
     for collection in collections:
         collection_titles.append(collection.title)
+    product = Product.objects.get(id=kwargs['pk'])
     context = {
-        'collection_title':collection_titles
+        'collection_title':collection_titles,
+        'product':product
     }
-    template_name = 'store/product_details.html'
     return render(request, template_name, context)
 
 
