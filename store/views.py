@@ -121,3 +121,16 @@ def productDetails(request, *args, **kwargs):
     return render(request, template_name, context)
 
 
+# Busket view
+def basket(request):
+    template_name = 'store/basket.html'
+    collections = Collection.objects.all()
+    collection_titles = []
+    for collection in collections:
+        collection_titles.append(collection.title)
+    context = {
+        'collection_title':collection_titles
+    }
+    return render(request, template_name, context)
+
+
