@@ -1,5 +1,6 @@
 {% extends "store/main.html" %} {% load static %} {% block main %}
-
-<h1>{{items}}</h1>
+{% for item in items %}
+<h1>{{item.product.title}}</h1>
+{% endfor %}
 
 {% endblock %}

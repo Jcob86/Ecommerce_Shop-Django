@@ -60,7 +60,7 @@ class BasketItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT, null=True, blank=True, related_name='items')
 
     def __str__(self) -> str:
-        return f'Products for {self.user}'
+        return f'Products for {self.basket}'
 
     class Meta:
-        ordering = ['user']
+        ordering = ['basket']
