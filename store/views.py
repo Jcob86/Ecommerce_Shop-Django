@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
-from .models import Collection, Product
+from .models import Collection, Product, BasketItem, Basket
 from .forms import UserCreationForm
 
 
@@ -123,12 +123,15 @@ def productDetails(request, *args, **kwargs):
 
 # Busket view
 def basket(request):
+    basket = BasketItem.objects.filter(user=request.user)
+
     template_name = 'store/basket.html'
     collections = Collection.objects.all()
     collection_titles = []
     for collection in collections:
         collection_titles.append(collection.title)
     context = {
+        'items': basket,
         'collection_title':collection_titles
     }
     return render(request, template_name, context)

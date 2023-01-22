@@ -41,27 +41,26 @@ class Product(models.Model):
         ordering = ['title']
 
 
-class BasketItem(models.Model):
+class Basket(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    products = models.ManyToManyField(Product)
+    full_name = models.CharField(max_length=255, null=True, blank=True)
+    city = models.CharField(max_length=255, null=True, blank=True)
+    street = models.CharField(max_length=255, null=True, blank=True)
+    phone = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self) -> str:
-        return f'Products for {self.user}'
+        return f'Basket for {self.user}'
 
     class Meta:
         ordering = ['user']
 
 
-class Basket(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    items = models.ForeignKey(BasketItem, on_delete=models.CASCADE, null=True, blank=True)
-    full_name = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    street = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
+class BasketItem(models.Model):
+    basket = models.ForeignKey(Basket, on_delete=models.PROTECT, null=True, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, null=True, blank=True, related_name='items')
 
     def __str__(self) -> str:
-        return f'Basket for {self.user}'
+        return f'Products for {self.user}'
 
     class Meta:
         ordering = ['user']
