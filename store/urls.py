@@ -9,6 +9,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='logged-out'), name='logout'),
     path('logged-out/', views.logged_out, name='logged-out'),
     path('basket/', views.basket, name='basket'),
+    path('add-product/', views.add_product, name='add-product'),
+    path('delete-product/', views.delete_product, name='delete-product'),
     path('register/', views.CustomRegisterView.as_view(), name='register'),
     path('<int:pk>/', views.productDetails, name='product-details'),
     path('<str:category>/', views.productList, name='products'),

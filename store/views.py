@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
+from django.views.decorators.csrf import csrf_exempt
 from .models import Collection, Product, Basket, BasketItem
 from .forms import UserCreationForm
 
@@ -122,6 +123,7 @@ def productDetails(request, *args, **kwargs):
 
 
 # Basket view
+@csrf_exempt
 def basket(request):
     basket, created = Basket.objects.get_or_create(user=request.user)
     items = basket.basketitem_set.all()
@@ -136,4 +138,27 @@ def basket(request):
     }
     return render(request, template_name, context)
 
+@csrf_exempt
+def add_product(request):
+    basket, created = Basket.objects.get_or_create(user=request.user)
+    product = Product.objects.get(title=request.POST.get('product'))
+    basket_item = BasketItem()
+    basket_item.basket = basket
+    basket_item.product = product
+    basket_item.save()
+    return redirect('basket')
 
+@csrf_exempt
+def delete_product(request):
+    basket, created = Basket.objects.get_or_create(user=request.user)
+    product = Product.objects.get(title=request.POST.get('item'))
+    item = BasketItem.objects.filter(basket=basket, product=product).delete()
+    # item.save()
+    return redirect('basket')
+
+
+
+
+# na przycisk add to cart dodać produkt do koszyka
+
+# wziac koszyk przypisany do danego usera lub go utworzyc
