@@ -1,7 +1,3 @@
-# Ecommerce-Django
-
-Ecommerce Shop build in Django on the Backend and HTML&CSS, Bootstrap, JS on the Frontend. All connected to Postresql
-
 ## Installation
 
 Windows Installation:
