@@ -1,1 +1,25 @@
 # Ecommerce-Django
+
+Ecommerce Shop build in Django on the Backend and HTML&CSS, Bootstrap, JS on the Frontend. All connected to Postresql
+
+## Installation
+
+Windows Installation:
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+Use the package manager [pip] to install project's requirements.
+
+```bash
+pip install -r requirements.txt
+```
+You have to configure Postgresql on your desktop and do some migrations
+
+Now you can run the project with this command
+
+```bash
+python manage.py runserver
+```
