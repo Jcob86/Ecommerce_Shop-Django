@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,8 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g01-j_1h63#n&0c0rrr0iwg&@#w%a@2-rif71ijwz!=r%7saxd'
-
+SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -80,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'EcommerceDjango',
 	'USER': 'postgres',
-	'PASSWORD': '1234',
+	'PASSWORD': env("PASSWORD"),
 	'HOST': '127.0.0.1',
 	'PORT': '5432',
     }
