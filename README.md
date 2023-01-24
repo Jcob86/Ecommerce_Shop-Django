@@ -24,4 +24,10 @@ Now you can run the project with this command
 python manage.py runserver
 ```
 
-![plot](./img/hoodie.webp)
+Some images from the App
+
+![plot](./img/starter.jpg)
+
+![plot](./img/basket_img.jpg)
+
+![plot](./img/log_page.jpg)
