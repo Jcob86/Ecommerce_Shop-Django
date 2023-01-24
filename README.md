@@ -1,6 +1,6 @@
 ## Link to a page
 
-<a href="https://ecommercejacob.pythonanywhere.com/">Ecommerce Shop</a>
+<a href="https://ecommercejacob.pythonanywhere.com/" target="_blank">Ecommerce Shop</a>
 
 ## Installation
 
