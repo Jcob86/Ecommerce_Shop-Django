@@ -153,12 +153,15 @@ def delete_product(request):
     basket, created = Basket.objects.get_or_create(user=request.user)
     product = Product.objects.get(title=request.POST.get('item'))
     item = BasketItem.objects.filter(basket=basket, product=product).delete()
-    # item.save()
     return redirect('basket')
 
 
-
-
-# na przycisk add to cart dodać produkt do koszyka
-
-# wziac koszyk przypisany do danego usera lub go utworzyc
+def after_order(request):
+    collections = Collection.objects.all()
+    collection_titles = []
+    for collection in collections:
+        collection_titles.append(collection.title)
+    context = {
+        'collection_title':collection_titles
+    }
+    return render(request, 'store/ordered.html', context)

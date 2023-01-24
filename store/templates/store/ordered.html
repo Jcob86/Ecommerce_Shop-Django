@@ -1,0 +1,11 @@
+{% extends "store/main.html" %} {% load static %} {% block main %}
+<div class="container mt-5" style="height: 550px;">
+    <div class="row mt-5">
+        <div class="col">
+            <h1>Now you should be redirected to a payment page, it's feature to add on production.</h1>
+            <h1 class="mt-5">I hope you have had great feeling using my App, feel free to contact me if you have some questions or projects to discuss.</h1>
+        <a href="{% url 'main' %}"><button type="button" class="btn btn-primary btn-lg mt-5">Go to the main Page</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
