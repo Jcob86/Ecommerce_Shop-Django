@@ -23,3 +23,5 @@ Now you can run the project with this command
 ```bash
 python manage.py runserver
 ```
+
+![plot](./img/hoodie.webp)
