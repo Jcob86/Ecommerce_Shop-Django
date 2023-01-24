@@ -20,6 +20,8 @@ Now you can run the project with this command
 python manage.py runserver
 ```
 
+All details of products (collections, description, price etc.), all details of basket, basketitems are stored in Database. They're not hardcoded to a HTML code
+
 Some images from the App
 
 ![plot](./img/starter.jpg)
